@@ -1,0 +1,30 @@
+{
+  "name": "videohubapp",
+  "version": "1.0.0",
+  "description": "One place to store all ur favorite videos.",
+  "main": "server.js",
+  "bin": {
+    "videohubapp": "bin/www.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdeghelshi95/VideoHubApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdeghelshi95/VideoHubApp/issues"
+  },
+  "homepage": "https://github.com/jdeghelshi95/VideoHubApp#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.5",
+    "node.js": "^0.0.1-security"
+  }
+}
