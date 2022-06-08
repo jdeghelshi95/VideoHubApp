@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var VideoSchema  =new Schema({
     title: String,
     title:{
-        type: String,
+        URL: String,
         required: true,
         unique:true,
 
