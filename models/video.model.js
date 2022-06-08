@@ -13,3 +13,5 @@ var VideoSchema  =new Schema({
 
 
 module.exports = mongoose.model('video', VideoSchema)
+
+
