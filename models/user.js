@@ -1,10 +1,11 @@
+var mongoose = requrie("mongoose");
 
-const mongoose = require ('mongoose')
-const vidSchema = new mongoose.Schema({
+var userSchema = new mongoose.Schema({
     name: String,
-    embedUrl: String
-})
-
-const vid = mongoose.model('vid', vidSchema)
-
-module.exports = vid
+    email: String,
+    avatar: String,
+    googleId: String,
+},{
+    timestaps:true
+});
+module.exports = mongoose.model('Users', userSchema)
