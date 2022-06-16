@@ -1,10 +1,8 @@
 var router = require('express').Router();
 const passport = require('passport')
 router.get('/', function (req,res){
-    res.redirect('/students')
+    res.redirect('/vids')
 });
-
-
 
 
 
@@ -24,3 +22,12 @@ router.get('/oauth2callback', passport.authenticate(
             failureRedirect : 'users'
         }
     ));
+
+
+    // oauth logout
+    router.get('/logout', function (req,res){
+        req.logout();
+        res.redirect('/vids')
+    })
+
+    module.exports = router;

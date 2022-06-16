@@ -1,6 +1,6 @@
 const passport = require('passport');
 const user = require('../models/user');
-const User = require = require ('../models/user').OAuth2Strategy
+const User = require  ('../models/user').OAuth2Strategy
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy
 
 
@@ -18,7 +18,7 @@ function(accessToken, refreshToken, profile, cb){
           return cb(null, user);
         } else {
           // we have a new student via OAuth!
-          var newUser = new Student({
+          var newUser = new User({
             name: profile.displayName,
             email: profile.emails[0].value,
             googleId: profile.id
@@ -36,7 +36,7 @@ function(accessToken, refreshToken, profile, cb){
         done(null, user.id)
     });
     passport.deserializeUser(function(id,done){
-        User.findByID(id,function(err,student){
+        User.findByID(id,function(err,user){
             done(err,user);
         })
     })

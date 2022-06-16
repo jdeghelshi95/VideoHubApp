@@ -1,7 +1,8 @@
-const express = requrie('express')
 const router = express.router()
 const vidCtrl = require('../controllers/video.controller')
-router.get('/', vidCtrl.index)
+
+// get videos
+router.get('/vids', vidCtrl.index)
 
 
 // delete route
