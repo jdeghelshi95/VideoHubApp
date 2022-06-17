@@ -1,14 +1,11 @@
 var mongoose = require('mongoose')
-var Schema = mongoose.Schema;
 
-var VideoSchema  =new Schema({
+
+var VideoSchema  = new mongoose.Schema({
     title: String,
-    title:{
-        URL: String,
-        required: true,
-        unique:true,
+    embedlink: String,
+    description: String,
 
-    }
 })
 
 

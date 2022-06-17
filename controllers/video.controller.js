@@ -34,7 +34,6 @@ const updateVideo = (req,res) => {
 
 
 
-
 module.exports = {
 index,
 deleteVideo,

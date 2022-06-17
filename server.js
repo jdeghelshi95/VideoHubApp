@@ -18,7 +18,7 @@ var app  = express();
 
 // connecting with mangodb and mongoose
 require('./config/database');
-require('./config/passport')
+// require('./config/passport')
 
 // require route files 
 var indexRoutes = require('./routes/index')
@@ -27,7 +27,7 @@ var videoRoutes = require('./routes/videoRoutes')
 app.use(bodyParser);
 app.use(express.json());
 // view enginer setup
-app.set('views', path.join(_dirname,'views'));
+app.set('views', path.join(__dirname,'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
