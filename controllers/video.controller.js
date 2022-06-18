@@ -10,7 +10,7 @@ const index = (req, res) => {
 const deleteVideo = async (req, res) => {
   try {
     await Video.findByIdAndDelete(req.params.id);
-    res.redirect('/');
+    res.redirect("/");
   } catch (err) {
     console.log("er==>>", err);
     res.status(400).send(err);
@@ -19,12 +19,22 @@ const deleteVideo = async (req, res) => {
 
 const createVideo = async (req, res) => {
   try {
-
+    console.log("bodyy==>>", typeof req.body.id, req.body);
     req.body.userId = req.user.id;
-    // const videoId = req.body.embedLink.split('=')[1];
-    // req.body.embedLink = `https://www.youtube.com/embed/${videoId}`;
-    await Video.create(req.body);
-    res.redirect('/');
+    const { embedLink, id } = req.body;
+    if (embedLink.includes("youtube")) {
+      const videoId = req.body.embedLink.split("=")[1];
+      req.body.embedLink = `https://www.youtube.com/embed/${videoId}`;
+    } else if (embedLink.includes("vimeo")) {
+      const videoId = req.body.embedLink.split("/").slice(-1)[0];
+      req.body.embedLink = `https://player.vimeo.com/video/${videoId}`;
+    }
+    if (id) {
+      await Video.findByIdAndUpdate(id, req.body);
+    } else {
+      await Video.create(req.body);
+    }
+    res.redirect("/");
   } catch (err) {
     console.log("er==>>", err);
     res.status(400).send(err);

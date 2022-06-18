@@ -26,19 +26,21 @@
       <% videos.forEach(video => { %>
       <div class="col">
         <div class="card">
-            <a href="/videos/<%= video._id %>/delete" class="btn btn-danger">X</a>
+          <a href="/videos/<%= video._id %>/delete" class="btn btn-danger">X</a>
           <div class="card-body">
             <iframe width="420" height="315" src="<%= video.embedLink %>">
             </iframe>
           </div>
           <button
-      type="button"
-      class="btn btn-primary"
-      data-bs-toggle="modal"
-      data-bs-target="#exampleModal"
-    >
-      Edit
-    </button>
+            class="edit-video"
+            data-video="<%= JSON.stringify(video) %>"
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Edit
+          </button>
         </div>
         <p class="card-text"><%= video.description %></p>
       </div>
@@ -77,7 +79,3 @@
     </div>
   </body>
 </html>
-
-
-
-
