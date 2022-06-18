@@ -1,15 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
- <h1>
-     jarjar the true sith lord 
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Library</title>
+  </head>
+  <body>
+    <div class="navbar-fixed"></div>
 
- </h1>
-</body>
+    <h1>Video Hub</h1>
+    <h2>welcome <%= user.email %></h2>
+
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Add
+    </button>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% videos.forEach(video => { %>
+      <div class="col">
+        <div class="card">
+            <a href="/videos/<%= video._id %>/delete" class="btn btn-danger">X</a>
+          <div class="card-body">
+            <iframe width="420" height="315" src="<%= video.embedLink %>">
+            </iframe>
+          </div>
+          <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Edit
+    </button>
+        </div>
+        <p class="card-text"><%= video.description %></p>
+      </div>
+      <% }) %>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form action="/videos" method="post">
+              Embed Link: <input name="embedLink" type="url" required /> <br />
+              Description: <textarea name="description" required></textarea>
+              <br />
+              <button type="submit">Add Video</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
+
+
+
+

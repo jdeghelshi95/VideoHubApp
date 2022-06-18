@@ -1,65 +1,49 @@
-var express = require ('express');
-var path = require('path')
-var logger = require('morgan')
-var cookieParser = require('cookie-parser')
-const session = require('express-session')
-var bodyParser =  require('body-parser')
-var passport = require ('passport')
+require("dotenv").config();
+const express = require("express");
+const path = require("path");
+const session = require("express-session");
+const passport = require("passport");
+const mongoose = require("mongoose");
+const expressLayouts = require('express-ejs-layouts');
 
-// var Video = require('./models/video.model')
-// var path = require('path')
-// var logger = require ('morgan ')
-// var cookieParser = require ('cookie-parser')
-PORT = 5600
+require("./config/passport");
+const indexRouter = require("./routes/auth");
+const videoRoutes = require("./routes/video");
 
-require('dotenv').config()
+(async () => {
+  await mongoose.connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    // useCreateIndex:true
+  });
 
-var app  = express();
+  const app = express();
 
-// connecting with mangodb and mongoose
-require('./config/database');
-// require('./config/passport')
+  // view engine setup
+  app.set("view engine", "ejs");
 
-// require route files 
-var indexRoutes = require('./routes/index')
-var videoRoutes = require('./routes/videoRoutes')
-// view engine config
-app.use(bodyParser);
-app.use(express.json());
-// view enginer setup
-app.set('views', path.join(__dirname,'views'));
-app.set('view engine', 'ejs');
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(logger('dev'));
-app.use(express.json())
-app.use(express.urlencoded({extended:true}));
-app.use(cookieParser())
+  app.use(expressLayouts);
+  app.use(express.urlencoded({ extended: false }));
+  app.use(
+    session({
+      secret: "keyboard cat",
+      resave: false, // don't save session if unmodified
+      saveUninitialized: false, // don't create session until something stored
+    })
+  ); 
 
+  app.use(passport.authenticate("session"));
+  app.use((req, res, next) => {
+    if (req.isAuthenticated()) {
+      res.locals.user = req.user;
+    }
+    next();
+  });
+  app.use("/", indexRouter);
+  app.use("/videos", videoRoutes);
 
-// session use
-app.use(session({
-    secret: "VidsForAll",
-    resave: false,
-    saveUninitialized: true
-}))
-
-// passport use
-
-app.use(passport.initialize())
-app.use(passport.session())
-
-// routes
-app.use('/', indexRoutes)
-app.use('/' , videoRoutes)
-
-
-
-
-
-app.listen(PORT, () => {
-    console.log('surrender to the sith on port', PORT)
-})
-
-
-
- 
+  const port = process.env.PORT || 5600;
+  app.listen(port, () => {
+    console.log("surrender to the sith on port", port);
+  });
+})();

@@ -5,7 +5,9 @@ var userSchema = new mongoose.Schema({
     email: String,
     avatar: String,
     googleId: String,
+    password: String,
 },{
     timestaps:true
 });
-module.exports = mongoose.model('Users', userSchema)
+
+module.exports = mongoose.model('User', userSchema)
