@@ -19,7 +19,7 @@ const deleteVideo = async (req, res) => {
 
 const createVideo = async (req, res) => {
   try {
-    console.log("bodyy==>>", typeof req.body.id, req.body);
+    console.log("body==>>", typeof req.body.id, req.body);
     req.body.userId = req.user.id;
     const { embedLink, id } = req.body;
     if (embedLink.includes("youtube")) {

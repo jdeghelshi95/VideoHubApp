@@ -47,6 +47,6 @@ const videoRoutes = require("./routes/video");
 
   const port = process.env.PORT || 3000;
   app.listen(port, () => {
-    console.log("surrender to the sith on port", port);
+    console.log("surrender to the sith lord jarjar binks on port", port);
   });
 })();
