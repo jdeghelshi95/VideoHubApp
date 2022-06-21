@@ -42,6 +42,7 @@ const videoRoutes = require("./routes/video");
   });
   app.use("/", indexRouter);
   app.use("/videos", videoRoutes);
+  app.use(express.static('public'));
 
   const port = process.env.PORT || 5600;
   app.listen(port, () => {
