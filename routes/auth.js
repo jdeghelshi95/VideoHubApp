@@ -24,13 +24,17 @@ router.get("/register", function (req, res) {
 });
 
 router.post("/register", async (req, res) => {
-  try {
-    req.body.password = bcrypt.hashSync(req.body.password, 10);
-    await User.create(req.body);
-    res.redirect("/");
-  } catch (err) {
-    res.status(500).send(err);
-  }
+  req.body.password = bcrypt.hashSync(req.body.password, 10);
+  await User.create(req.body);
+  res.redirect("/");
+
+  // try {
+  //   req.body.password = bcrypt.hashSync(req.body.password, 10);
+  //   await User.create(req.body);
+  //   res.redirect("/");
+  // } catch (err) {
+  //   res.status(500).send(err);
+  // }
 });
 
 router.post(
