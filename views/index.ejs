@@ -1,28 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
-   <link rel="stylesheet" href="/public/css/styles.css"  type= "text/css">
-    <title>Video Library</title>
-  </head>
-  <body>
-    <div class="navbar-fixed"></div>
 
-    <h1 class="display-1 text-center">Video Hub</h1>
-    <h2 class="p-3 mb-2 bg-info text-dark display-6 text-center" >Welcome <%= user.email %></h2>
+
+    <div class="alert alert-light  display-6 text-center" >Welcome <%= user.email %></div>
 
     <!-- add button  -->
     <!-- Button trigger modal -->
-    <div class="text-center"><button
+    <div class="text-center">
+      <button
+      id="addVideo"
       type="button"
       class="btn btn-primary btn-lg text-center"
       data-bs-toggle="modal"
       data-bs-target="#exampleModal"
     >
-      Add Video
+     + Add Video
     </button>
     </div>
     <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -31,7 +21,7 @@
         <div class="card">
           <a href="/videos/<%= video._id %>/delete" class="btn btn-danger">X</a>
           <div class="card-body text-center">
-            <iframe width="360" height="315" src="<%= video.embedLink %>">
+            <iframe width="100%" height="315" src="<%= video.embedLink %>">
             </iframe>
           </div>
           <button
@@ -72,14 +62,14 @@
           </div>
           <div class="modal-body">
             <form action="/videos" method="post">
-              Embed Link: <input name="embedLink" type="url" required /> <br />
-              Description: <textarea name="description" required></textarea>
+              Embed Link: <input class="form-control" name="embedLink" type="url" required /> <br />
+              Description: <textarea class="form-control" name="description" required></textarea>
+              <input name="id" type="hidden">
               <br />
-              <button type="submit">Submit</button>
+              <button class="btn btn-primary" type="submit">Submit</button>
             </form>
           </div>
         </div>
       </div>
     </div>
-  </body>
-</html>
+

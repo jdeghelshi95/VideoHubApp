@@ -1,11 +1,44 @@
-li {
-    list-style: none;
+body{
+    background-image: linear-gradient(to right top,#FB0712,#124FEB);
 }
-
-body {
-    background-color: black;
+.card{
+    color:#0029ff;
+    font-size:40px;
+    font-weight:700;
+    border:none;
 }
-
-.inner {
-    background-color: black;
+.signin{
+    font-size:30px;
+    font-weight:600;
+}
+.btn1{
+  border-radius:25px;
+  background-color:#fff;
+  color:#eee;
+  height:50px;
+  width:350px;
+  border-color:#e7e9ec;
+  font-size:18px;
+}
+.btn2{
+    border-radius:25px;
+  background-color:#0029ff;
+  color:#eee;
+  height:50px;
+  width:200px;
+  border-color:#e7e9ec;
+  font-size:18px;
+}
+.forgot{
+    font-size:30px;
+    color:#94969a;
+}
+.account{
+    font-size:22px;
+    color:#000000;
+    font-weight:500;
+}
+.signup{
+    color:#0029ff;
+    font-weight:700;
 }
