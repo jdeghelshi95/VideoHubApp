@@ -11,7 +11,8 @@ const indexRouter = require("./routes/auth");
 const videoRoutes = require("./routes/video");
 
 (async () => {
-  await mongoose.connect(process.env.DATABASE_URL, {
+  // console.log(`process.env.DATABASE_URL: ${process.env.DATABASE_URL}`);
+  await mongoose.connect(process.env.ORMONGO_URL || process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     // useCreateIndex:true
@@ -44,7 +45,7 @@ const videoRoutes = require("./routes/video");
   app.use("/videos", videoRoutes);
   app.use(express.static('public'));
 
-  const port = process.env.PORT || 5600;
+  const port = process.env.PORT || 3000;
   app.listen(port, () => {
     console.log("surrender to the sith on port", port);
   });
