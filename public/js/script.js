@@ -1,4 +1,26 @@
 
+// document.getElementById("submit").addEventListener("click", async function(e) {
+//     e.preventDefault()
+//     await fetch("/login", {
+//         method: "POST",
+//         headers: {
+//             "content-type": "Application/json",
+//         },
+//         body: JSON.stringify({
+//             email: document.getElementById("email").value,
+//             password: document.getElementById("password").value
+//         })
+//     })
+//     // .then(res => res.json())
+//     .then(data => {
+//         if(data.status == "200"){
+//             console.log("data", data)
+//         }else{
+//             console.log("nope", data)
+//         }
+//     })
+//     .catch(err => console.log("err", err))
+// })
 
 document.querySelectorAll('.edit-video').forEach(btn => {
     btn.addEventListener('click', e => {
