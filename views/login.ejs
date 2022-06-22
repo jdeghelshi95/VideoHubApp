@@ -18,12 +18,18 @@
   <div class="container">
     <div class="row d-flex justify-content-center">
       <div class="col-md-6">
-        <div class="form-group card p-3 px-5 py-5 mt-3 align-items-center">
+        <div class="form-outline card p-3 px-5 py-5 mt-3 align-items-center">
           <span class="car">Video Hub</span>
           <span class="signin mt-3">Sign In with Email</span>
-          <input type="email" name="email" class="btn btn1 btn-light  mt-3 form-control" placeholder="Enter Your Email">
+          
+          <div class="form-outline mb-4">
+          <input type="email" id="inputEmailBox" name="email" class="btn btn1 btn-light mt-3 form-control" >
+          <label class ="form-label" for="InputLabelEmail">Email Address</label>
+          </div>
 
-          <input type="password" name="password" class="btn btn1 btn-light  mt-3 form-control" placeholder="Enter Your Password" />
+          <input type="password" id="inputPassBox" class="btn btn1 btn-light  mt-3 form-control" />
+          <label class = "form-label" for="inputPassBox">Password</label>
+
 
           <button type="submit" class="btn btn2 btn-light mt-3">SIGN IN</button>
           <!-- <span class="forgot mt-4">Forgot password</span> -->
