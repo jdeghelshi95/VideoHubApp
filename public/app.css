@@ -47,9 +47,18 @@ body{
     font-size: 20px;
 }
 
+.mobile-links li{
+    list-style-type: none;
+    margin-right: 12px;
+}
+
 @media screen and (max-width: 768px) {
     .mobile-links{
         flex-direction: column;
         align-items: center;
+    }
+
+    .mobile-links li{
+        margin-right: 0;
     }
 }
