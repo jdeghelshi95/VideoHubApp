@@ -4,7 +4,7 @@ _______
 
 ### Deployed Heroku App
 
-[VideoHUB](https://videoembeds.herokuapp.com/)
+## 👉 [VideoHUB](https://videoembeds.herokuapp.com/) 👈
 
 One place to store all ur favorite videos. 
 
