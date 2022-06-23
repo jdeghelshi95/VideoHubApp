@@ -11,6 +11,7 @@ One place to store all ur favorite videos.
 ![Image alt text](https://tinyurl.com/gitvideohub)
 
 ### This is a Video Embedding app that stores your embeds to your unique user account from several different websites. 
+Presently supported websites are Youtube and Vimeo (More Supported websites Pending)
 
 ## Technologies:
 - Express
