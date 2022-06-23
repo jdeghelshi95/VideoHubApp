@@ -12,7 +12,7 @@ Have an account? <a href="/">Sign In</a> -->
     <div class="container">
       <div class="row d-flex justify-content-center">
   
-        <div class="col-md-6">
+        <div class="col-md-8">
           <div class="form-outline card p-3 px-5 py-5 mt-3 align-items-center">
             <span class="car">Registration</span>
             <span class="signin mt-3">Sign Up with Email</span>
@@ -28,6 +28,12 @@ Have an account? <a href="/">Sign In</a> -->
             <div class="form-outline mb-4">
             <button type="submit" class="btn btn2 btn-light mt-3 form-control">Register</button>
             </div>
+
+            <p class="text-danger error">
+              <% if (messages.error) { %>
+                <%= messages.error %>
+                  <% } %>
+            </p>
             
             <a class="signup" href="/">
               <button class="btn btn-secondary btn-lg" type = "button" role="button">Sign In Page</button>

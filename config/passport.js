@@ -47,10 +47,10 @@ passport.use(
           return done(err);
         }
         if (!user) {
-          return done(null, false);
+          return done(null, false, {message: 'User account not found!'});
         }
         if (!bcrypt.compareSync(password, user.password)) {
-          return done(null, false);
+          return done(null, false, {message: 'Password is incorrect!'});
         }
         return done(null, user);
       });

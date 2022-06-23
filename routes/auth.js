@@ -23,10 +23,18 @@ router.get("/register", function (req, res) {
   res.render("register");
 });
 
-router.post("/register", async (req, res) => {
+router.post("/register", (req, res) => {
   req.body.password = bcrypt.hashSync(req.body.password, 10);
-  await User.create(req.body);
-  res.redirect("/");
+  User.create(req.body, (err, data) => {
+    if(err) {
+      req.flash('error', 'Email already in use!')
+      res.redirect("/register")
+    }else{
+      res.redirect("/");
+    }
+    
+  });
+  
 
   // try {
   //   req.body.password = bcrypt.hashSync(req.body.password, 10);
@@ -39,14 +47,18 @@ router.post("/register", async (req, res) => {
 
 router.post(
   "/login",
-  passport.authenticate("local", { failureRedirect: "/login" }),
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true
+  }),
   function (req, res) {
     // res.json({success: true, msg: 'signed in succesfully!'})
-    res.redirect("/");
+    // res.redirect("/");
   }
 );
 
-/*router.get(
+/*router.get(lshi
   "/auth/google",
   passport.authenticate("google", { scope: ["profile", "email"] })
 );

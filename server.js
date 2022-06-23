@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
+const flash = require("express-flash")
 const session = require("express-session");
 const passport = require("passport");
 const mongoose = require("mongoose");
@@ -26,6 +27,7 @@ const videoRoutes = require("./routes/video");
   app.use(express.static(__dirname + '/public'))
   app.use(expressLayouts);
   app.use(express.urlencoded({ extended: false }));
+  app.use(flash());
   app.use(
     session({
       secret: "keyboard cat",
