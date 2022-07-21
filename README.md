@@ -16,7 +16,7 @@ Presently supported websites are Youtube and Vimeo (More Supported websites Pend
 ## Technologies:
 - Express
 - Mongoose
-- Dcrypt
+- Bcrypt
 - Passport - Local method
 - Heroku
 - Bootstrap 
